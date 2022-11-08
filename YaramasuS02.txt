@@ -1,0 +1,50 @@
+-- Saikumar Yaramasu
+-- SQL Assignment 02
+
+source C:/0/clearwater.sql
+
+-- drop database Clearwater_Traders;
+-- create database Clearwater_Traders;
+-- use Clearwater_Traders;
+
+-- #1
+select first,last,city from customer;
+
+-- #2
+select count(*) as Order_Count from cust_order where meth_pmt = 'CC';
+
+-- #3
+select count(*) as ItemCount from inventory where qoh=137;
+
+-- #4
+select shipment_id,inv_id,date_received from shipment_line where date_received < '2003-08-25';
+
+-- #5
+select item_id,item_size,qoh from inventory where color='Navy' and price = 29.95;
+
+-- #6
+select sum(qoh) as sumQOH from inventory where color='Eggplant';
+
+-- #7
+select * from customer where first like 'M%';
+
+-- #8
+select * from inventory where color='pink' or color like '%e' and price>20 and qoh <>0;
+
+-- #9
+select * from inventory where (color like 's%' or color like '%ight%') and inv_id>11700 and qoh <>0;
+
+-- #10
+select distinct inv_id from shipment_line;
+
+-- #11
+select * from shipment_line order by inv_id;
+
+-- #12
+select * from order_source where source_desc like 'w%' and order_source_id=1;
+
+-- #13
+select order_id ,count(order_quantity) as 'COUNT(order_quantity)' from order_line group by order_ID order by 2 desc;
+
+-- #14
+select order_id ,count(order_quantity) as 'COUNT(order_quantity)' from order_line group by order_ID having count(order_quantity) > 1;
